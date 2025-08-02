@@ -1,6 +1,6 @@
-const { Schema, model } = require('mongoose'); 
+const { Schema, model, Types } = require('mongoose'); 
 
-const castSchema = new Schema({ 
+const memberSchema = new Schema({ 
     firstName: {
         type: String, 
         required: true 
@@ -29,25 +29,29 @@ const castSchema = new Schema({
         type: Date, 
         required: false 
     }, 
+    occupation: {
+        type: Types.ObjectId, 
+        ref: 'Occupation' 
+    }
 
 }); 
 
-castSchema.methods = { 
-    // Returns cast age 
+memberSchema.methods = { 
+    // Returns member age 
     getAge: function() { 
         // Today date, month and day 
         const now = new Date(Date.now()); 
         const monthNow = now.getMonth(); 
         const dateNow = now.getDate(); 
 
-        // Cast date, month and day of birth 
+        // Member date, month and day of birth 
         const birthdate = new Date(this.birthdate); 
         const monthOfBirth = birthdate.getMonth(); 
         const dateOfBirth = birthdate.getDate(); 
 
-        // Cast years
+        // Years from member birthdate to today 
         const age = now.getFullYear() - birthdate.getFullYear(); 
-        // Cast birthday this year not yet celebrated 
+        // Member birthday this year not yet celebrated 
         if (monthNow < monthOfBirth || (monthNow === monthOfBirth && dateNow < dateOfBirth)) { 
             age -= 1; 
         } 
@@ -56,6 +60,6 @@ castSchema.methods = {
     }
 }
 
-const Cast = model('Cast', castSchema); 
+const Member = model('Member', memberSchema); 
 
-module.exports = Cast; 
+module.exports = Member; 
