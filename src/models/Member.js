@@ -19,7 +19,7 @@ const memberSchema = new Schema({
     }, 
     imageUrl: {
         type: String, 
-        required: true 
+        required: false 
     }, 
     dateOfBirth: {
         type: Date, 
