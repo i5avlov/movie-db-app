@@ -32,6 +32,30 @@ const castSchema = new Schema({
 
 }); 
 
+castSchema.methods = { 
+    // Returns cast age 
+    getAge: function() { 
+        // Today date, month and day 
+        const now = new Date(Date.now()); 
+        const monthNow = now.getMonth(); 
+        const dateNow = now.getDate(); 
+
+        // Cast date, month and day of birth 
+        const birthdate = new Date(this.birthdate); 
+        const monthOfBirth = birthdate.getMonth(); 
+        const dateOfBirth = birthdate.getDate(); 
+
+        // Cast years
+        const age = now.getFullYear() - birthdate.getFullYear(); 
+        // Cast birthday this year not yet celebrated 
+        if (monthNow < monthOfBirth || (monthNow === monthOfBirth && dateNow < dateOfBirth)) { 
+            age -= 1; 
+        } 
+
+        return age; 
+    }
+}
+
 const Cast = model('Cast', castSchema); 
 
 module.exports = Cast; 
