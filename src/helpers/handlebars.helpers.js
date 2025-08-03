@@ -30,6 +30,20 @@ module.exports = {
 
     joinGenres: (genres = []) => { 
         return genres.map(g => g.name).join(', '); 
+    }, 
+
+    selectIfEqual: (category, currentCategory) => { 
+        return category.equals(currentCategory) 
+            ? 'selected' 
+            : ''; 
+
+    }, 
+
+    checkIfIncluded: (genreIds = [], genreId) => { 
+        return genreIds.some(gId => gId.equals(genreId)) 
+            ? 'checked' 
+            : ''; 
+
     }
 
 }; 
