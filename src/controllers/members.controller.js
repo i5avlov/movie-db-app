@@ -32,4 +32,14 @@ membersController
         res.render('members/index', { membersData }); 
     }); 
 
+membersController
+    .get('/:memberId/details', async (req, res) => { 
+        const memberId = req.params.memberId; 
+        const memberData = await membersService.getById(memberId)
+            .populate('occupation')
+            .lean(); 
+
+        res.render('members/details', memberData); 
+    }); 
+
 module.exports = membersController; 
