@@ -28,4 +28,8 @@ module.exports = {
         return new Date(date).getFullYear(); 
     }, 
 
+    joinGenres: (genres = []) => { 
+        return genres.map(g => g.name).join(', '); 
+    }
+
 }; 
