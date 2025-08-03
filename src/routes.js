@@ -3,6 +3,7 @@ const categoriesController = require('./controllers/categories.controller');
 const genresController = require('./controllers/genres.controller');
 const homeController = require('./controllers/home.controller'); 
 const membersController = require('./controllers/members.controller');
+const moviesController = require('./controllers/movies.controller');
 const occupationsController = require('./controllers/occupations.controller'); 
 
 
@@ -11,5 +12,6 @@ routes.use('/occupations', occupationsController);
 routes.use('/members', membersController); 
 routes.use('/genres', genresController); 
 routes.use('/categories', categoriesController); 
+routes.use('/movies', moviesController); 
 
 module.exports = routes; 
