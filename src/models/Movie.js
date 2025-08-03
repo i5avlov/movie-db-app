@@ -13,7 +13,7 @@ const movieSchema = new Schema({
         type: String, 
         required: true 
     }, 
-    genre: [{
+    genres: [{
         type: Types.ObjectId, 
         ref: 'Genre' 
     }], 
