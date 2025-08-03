@@ -28,7 +28,7 @@ moviesController
 moviesController
     .get('/:movieId/details', async (req, res) => { 
         const movieId = req.params.movieId; 
-        const movieData = await moviesService.getDetails(movieId).lean(); 
+        const movieData = await moviesService.getDetails(movieId).populate('genres').lean(); 
 
         res.render('movies/details', movieData); 
     }); 
