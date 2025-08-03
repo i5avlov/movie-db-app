@@ -33,4 +33,11 @@ moviesController
         res.render('movies/details', movieData); 
     }); 
 
+moviesController
+    .get('/', async (req, res) => { 
+        const moviesData = await moviesService.getAllIndex().populate('genres category').lean(); 
+
+        res.render('movies/index', { moviesData }); 
+    }); 
+
 module.exports = moviesController; 
