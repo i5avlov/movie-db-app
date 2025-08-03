@@ -14,8 +14,8 @@ moviesController
         const movieData = req.body;  
 
         try { 
-            await moviesService.add(movieData); 
-            res.redirect('/'); 
+            const movie = await moviesService.add(movieData); 
+            res.redirect(`/movies/${movie.id}/details`); 
         } catch (e) {
             const categories = await categoriesService.getAll().lean(); 
             const genres = await genresService.getAll().lean(); 
@@ -23,6 +23,14 @@ moviesController
             res.render('movies/add', { categories, genres, errors: e }); 
         }
         
+    }); 
+
+moviesController
+    .get('/:movieId/details', async (req, res) => { 
+        const movieId = req.params.movieId; 
+        const movieData = await moviesService.getDetails(movieId).lean(); 
+
+        res.render('movies/details', movieData); 
     }); 
 
 module.exports = moviesController; 
