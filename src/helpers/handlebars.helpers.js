@@ -24,4 +24,8 @@ module.exports = {
         return age; 
     }, 
 
+    getYear: (date) => { 
+        return new Date(date).getFullYear(); 
+    }, 
+
 }; 
