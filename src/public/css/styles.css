@@ -4,14 +4,14 @@
     width: 100%; height: 100%; 
 } 
 
-.image-holder-member-index { 
+.image-holder-index { 
     height: 15rem; 
 } 
 
-.image-holder-member-details { 
+.image-holder-details { 
     height: 40vh; 
 } 
 
-.heading-member-index {
+.heading-index {
     font-size: 1.2rem; 
 }
