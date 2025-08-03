@@ -23,4 +23,13 @@ membersController
         
     }); 
 
+membersController
+    .get('/', async (req, res) => { 
+        const membersData = await membersService.getAll()
+            .populate('occupation')
+            .lean(); 
+
+        res.render('members/index', { membersData }); 
+    }); 
+
 module.exports = membersController; 
