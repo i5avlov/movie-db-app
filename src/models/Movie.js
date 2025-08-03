@@ -13,36 +13,36 @@ const movieSchema = new Schema({
         type: String, 
         required: true 
     }, 
-    genre: {
-        type: String, 
-        required: true 
-    }, 
+    genre: [{
+        type: Types.ObjectId, 
+        ref: 'Genre' 
+    }], 
     category: { 
-        type: String, 
+        type: Types.ObjectId, 
+        ref: 'Category' 
+    }, 
+    duration: {
+        type: Number, 
         required: true 
     }, 
     year: {
         type: Date, 
         required: true 
     }, 
-    duration: {
-        type: Number, 
-        required: true 
-    }, 
     director: {
-        type: String, 
-        required: true 
+        type: Types.ObjectId, 
+        ref: 'Member'
     }, 
     writer: {
-        type: String, 
-        required: true 
+        type: Types.ObjectId, 
+        ref: 'Member'
     }, 
     cast: [{
         type: Types.ObjectId, 
-        ref: 'Cast' 
+        ref: 'Member'
     }] 
 }); 
 
 const Movie = model('Movie', movieSchema); 
 
-module.exports = { Movie, Actor }; 
+module.exports = Movie; 
