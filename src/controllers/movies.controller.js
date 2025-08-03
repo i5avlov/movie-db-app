@@ -26,6 +26,33 @@ moviesController
     }); 
 
 moviesController
+    .get('/:movieId/update', async (req, res) => { 
+        const movieId = req.params.movieId; 
+        const movieData = await moviesService.getDetails(movieId).lean(); 
+        const categories = await categoriesService.getAll().lean(); 
+        const genres = await genresService.getAll().lean(); 
+
+        // console.log(movieData); 
+
+        res.render('movies/update', { movieData, categories, genres }); 
+    }) 
+    .post('/:movieId/update', async (req, res) => { 
+        const movieId = req.params.movieId; 
+        const movieData = req.body;  
+
+        try { 
+            const movie = await moviesService.update(movieId, movieData); 
+            res.redirect(`/movies/${movie.id}/details`); 
+        } catch (e) {
+            const categories = await categoriesService.getAll().lean(); 
+            const genres = await genresService.getAll().lean(); 
+
+            res.render('movies/update', { movieData, categories, genres, errors: e }); 
+        }
+        
+    }); 
+
+moviesController
     .get('/:movieId/details', async (req, res) => { 
         const movieId = req.params.movieId; 
         const movieData = await moviesService.getDetails(movieId).populate('genres').lean(); 
