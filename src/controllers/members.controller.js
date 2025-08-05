@@ -5,8 +5,17 @@ const occupationsService = require('../services/occupations.service');
 // Routes 
 membersController
     .get('/add', async (req, res) => { 
-        const occupations = await occupationsService.getAll().lean(); 
-        res.render('members/add', { occupations }); 
+        // const occupations = await occupationsService.getAll().lean(); 
+        const occupationTitle = req.query.member; 
+
+        try { 
+            const occupation = await occupationsService.getByValue(occupationTitle); 
+            res.render('members/add', { occupation }); 
+        } catch (e) { 
+            res.render('404', { errors: e }); 
+        }
+
+        // res.render('members/add', { occupations }); 
     }) 
     .post('/add', async (req, res) => { 
         const memberData = req.body; 

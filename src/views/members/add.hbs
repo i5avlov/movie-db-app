@@ -1,4 +1,4 @@
-<h2>Add Member</h2> 
+<h2>Add {{occupation.title}}</h2> 
 
 <form method="POST" class="form form-movie-create"> 
     <div class="form-group">
@@ -32,18 +32,10 @@
         <input name="birthdate" id="" type="text" class="form-control">
     </div> 
 
-    <div class="form-group">
-        <label for="" class="form-label">Occupation</label> 
-        <select name="occupationId" class="form-control" id=""> 
-            <option value="">-----------</option> 
-            {{#each occupations}} 
-            <option value="{{_id}}">{{title}}</option> 
-            {{/each}}
-        </select>
-    </div> 
+    <input name="occupationId" value="{{occupation._id}}" type="hidden">
 
     <div class="button mt-4">
-        <button class="btn btn-outline-success" type="submit">Add Member</button> 
+        <button class="btn btn-outline-success" type="submit">Add {{occupation.title}}</button> 
     </div> 
 
 </form> 

@@ -9,6 +9,15 @@ module.exports = {
         return Occupation.findById(occupationId); 
     }, 
 
+    getByValue: async (occupationTitle) => { 
+        const occupation = await Occupation.findOne({ title: occupationTitle }).lean(); 
+        if (null === occupation) { 
+            throw new Error('No such occupation'); 
+        } 
+
+        return occupation; 
+    }, 
+
     add: (occupationData) => { 
         const { title, description, imageUrl } = occupationData; 
         
