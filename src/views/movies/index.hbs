@@ -4,12 +4,13 @@
     {{#each moviesData}}
     <div class="col-md-3"> 
         <div class="movie"> 
+            <span>{{joinGenres genres}}</span> 
+            
             <div class="image-holder image-holder-index"> 
                 <img src="{{imageUrl}}" alt=""> 
             </div> 
  
-            <h4 class="heading-index">{{title}}</h4> 
-            <span>{{joinGenres genres}}</span> 
+            <h4 class="heading-index">{{title}}</h4>  
             <p>{{description}}</p>
             <a href="/movies/{{_id}}/details">Details</a> 
         </div>
