@@ -34,16 +34,22 @@
                 <input name="genreIds" value="{{_id}}" id="" type="checkbox"> 
                 <label for="" class="form-label">{{name}}</label> 
             </div> 
+            {{else}} 
+            <div class=""> 
+                No genres.
+            </div>
             {{/each}} 
         </div>
     </fieldset>
 
-    <div class="form-group">
+    <div class="form-group mt-2">
         <label for="" class="form-label">Category</label> 
         <select name="categoryId" id="" class="form-control"> 
             <option value="">----------</option> 
             {{#each categories}} 
             <option value="{{_id}}">{{name}}</option> 
+            {{else}} 
+            <option value="" disabled>No categories.</option> 
             {{/each}}
 
         </select>
