@@ -8,7 +8,7 @@ module.exports = {
             title, 
             description, 
             imageUrl, 
-            genre: genreIds, 
+            genres: genreIds, 
             category: categoryId, 
             duration, 
             year 
