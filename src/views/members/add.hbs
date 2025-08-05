@@ -1,4 +1,4 @@
-<h2>Add {{occupation.title}}</h2> 
+<h2>Add {{capitalize occupation.title}}</h2> 
 
 <form method="POST" class="form form-movie-create"> 
     <div class="form-group">
@@ -35,7 +35,7 @@
     <input name="occupationId" value="{{occupation._id}}" type="hidden">
 
     <div class="button mt-4">
-        <button class="btn btn-outline-success" type="submit">Add {{occupation.title}}</button> 
+        <button class="btn btn-outline-success" type="submit">Add {{ capitalize occupation.title}}</button> 
     </div> 
 
 </form> 
