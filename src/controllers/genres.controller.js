@@ -10,7 +10,7 @@ genresController
 
         try { 
             await genresService.add(genreData); 
-            res.redirect('/'); 
+            res.redirect('/genres/add'); 
         } catch (e) { 
             res.render('genres/add', { genreData, error: e }); 
         }

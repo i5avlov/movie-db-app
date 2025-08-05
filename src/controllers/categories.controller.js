@@ -10,7 +10,7 @@ categoriesController
 
         try { 
             await categoriesService.add(categoryData); 
-            res.redirect('/'); 
+            res.redirect('/categories/add'); 
         } catch (e) { 
             res.render('categories/add', { categoryData, error: e }); 
         }
