@@ -5,15 +5,11 @@ const memberSchema = new Schema({
         type: String, 
         required: true 
     }, 
-    middleName: {
-        type: String, 
-        required: false 
-    }, 
     lastName: {
         type: String, 
         required: true 
     }, 
-    bio: {
+    details: {
         type: String, 
         required: true 
     }, 
@@ -21,13 +17,9 @@ const memberSchema = new Schema({
         type: String, 
         required: false 
     }, 
-    dateOfBirth: {
+    birthDate: {
         type: Date, 
         required: true 
-    }, 
-    dateOfLifeEnd: {
-        type: Date, 
-        required: false 
     }, 
     occupation: {
         type: Types.ObjectId, 
